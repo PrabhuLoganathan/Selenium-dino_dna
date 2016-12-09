@@ -57,7 +57,3 @@ class TestCheckout(BaseTestCase):
 
         payment_page = PaymentPage(self.driver)
         # TODO: add verification that payment page is reached
-
-
-    def teardown(self):
-        pass
