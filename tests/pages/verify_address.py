@@ -1,5 +1,5 @@
-from base_page import BasePage
-from locators import VerifyAddressPageLocators
+from .base_page import BasePage
+from .locators import VerifyAddressPageLocators
 
 
 class VerifyAddressPage(BasePage):

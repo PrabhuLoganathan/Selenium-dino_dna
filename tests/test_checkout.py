@@ -1,8 +1,8 @@
-from base_test_case import BaseTestCase
-from pages.cart import CartPage
-from pages.shipping import ShippingPage
-from pages.verify_address import VerifyAddressPage
-from pages.payment import PaymentPage
+from .base_test_case import BaseTestCase
+from .pages.cart import CartPage
+from .pages.shipping import ShippingPage
+from .pages.verify_address import VerifyAddressPage
+from .pages.payment import PaymentPage
 
 
 class TestCheckout(BaseTestCase):

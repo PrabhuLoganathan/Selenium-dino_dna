@@ -1,5 +1,5 @@
-from base_page import BasePage
-from locators import ShippingPageLocators
+from .base_page import BasePage
+from .locators import ShippingPageLocators
 
 
 class ShippingPage(BasePage):
