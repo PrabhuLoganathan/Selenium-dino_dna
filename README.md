@@ -2,6 +2,9 @@
 Web UI automation with Python and Selenium
 
 ## Installation
+* Requirements:
+    * Python - http://docs.python-guide.org/en/latest/starting/installation/
+    * Pip - https://pip.pypa.io/en/stable/installing/
 * clone repository
     * `git clone https://github.com/BJam/dino_dna.git`
 * cd into directory
