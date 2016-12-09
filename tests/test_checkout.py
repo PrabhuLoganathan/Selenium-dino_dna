@@ -11,29 +11,40 @@ class TestCheckout(BaseTestCase):
     def setup(self):
         super(TestCheckout, self).setup()
 
-        # 1) Visit store.23andme.com/en-us/
-        self.driver.get('https://store.23andme.com/en-us/')
+    def test_checkout_many_kits(self):
+        """
+        Tests many kits can be added to cart.
+        """
 
-    def test_add_kit(self):
-        """
-        Tests cart add kit.
-        """
+        # TODO: update url match timeout to be more realistic of requirements
+
+        # 1) Visit store.23andme.com/en-us/
+        cart_page = CartPage(self.driver, 'https://store.23andme.com/en-us/')
+        cart_page.open()
+        assert cart_page.url_matches('https://store.23andme.com/en-us/cart/', timeout=5), 'Cart page not reached'
 
         # 2) Add 5 kits and enters unique names for each kit
-        cart_page = CartPage(self.driver)
-        # TODO: assert on page
+        cart_page.add_health_ancestory_kit('Trex')
+        assert cart_page.cart_item_match(order=1, label='Health + Ancestry', name='Trex')
+        #
+        # cart_page.add_health_ancestory_kit('Stegasaurus')
+        # assert cart_page.cart_item_match(order=2, label='Health + Ancestry', name='Stegasaurus')
+        #
+        # cart_page.add_health_ancestory_kit('Jim')
+        # assert cart_page.cart_item_match(order=3, label='Health + Ancestry', name='Jim')
+        #
+        # cart_page.add_health_ancestory_kit('Sam')
+        # assert cart_page.cart_item_match(order=4, label='Health + Ancestry', name='Sam')
+        #
+        # cart_page.add_health_ancestory_kit('Manny')
+        # assert cart_page.cart_item_match(order=5, label='Health + Ancestry', name='Manny')
 
-        cart_page.add_bundle('Trex')
-        cart_page.add_bundle('Stegasaurus')
-        cart_page.add_bundle('Jim')
-        cart_page.add_bundle('Sam')
-        cart_page.add_bundle('Manny')
-        # TODO: add assertions for presence of bundles
         cart_page.click_continue()
 
         # 3) Continue to the shipping page and enter a valid US shipping address and other info.
         shipping_page = ShippingPage(self.driver)
-        # TODO: assert on page
+        assert shipping_page.url_matches('https://store.23andme.com/en-us/shipping/', timeout=10), \
+            'Shipping page not reached'
 
         shipping_page.first_name('Brian')
         shipping_page.last_name('Jameson')
@@ -51,9 +62,11 @@ class TestCheckout(BaseTestCase):
 
         # 4) Continue through the shipping verification page and verifies that the payment page is reached.
         verify_address_page = VerifyAddressPage(self.driver)
-        # TODO: assert on page
-        # TODO: add verifcation for text of valid address match
+        assert verify_address_page.url_matches('https://store.23andme.com/en-us/verifyaddress/', timeout=10), \
+            'Verify Address page not reached'
+        assert verify_address_page.verify_address_success(), 'Verify Address address no valid'
         verify_address_page.click_continue()
 
         payment_page = PaymentPage(self.driver)
-        # TODO: add verification that payment page is reached
+        assert payment_page.url_matches('https://store.23andme.com/en-us/payment/', timeout=10), \
+            'Payment page not reached'

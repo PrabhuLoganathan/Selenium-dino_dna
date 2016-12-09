@@ -1,12 +1,15 @@
 from selenium.webdriver.common.by import By
 
+
 class CartPageLocators(object):
     """A class for cart page locators."""
     ADD_BUNDLE_BUTTON = (By.CSS_SELECTOR, 'span.quantity-control-button.js-add-kit')
     KIT_ITEM = (By.CSS_SELECTOR, 'div.js-kit-item.cart-item-row')
     # KIT_ITEM_SAVING = (By.CSS_SELECTOR, 'div.js-kit-item.cart-item-row.js-saving')
     ITEM_NAME = (By.CLASS_NAME, 'js-kit-name')
+    ITEM_LABEL = (By.CLASS_NAME, 'item-kit-label')
     CONTINUE_BUTTON = (By.CLASS_NAME, 'submit')
+
 
 class ShippingPageLocators(object):
     """A class for Shipping page locators. """
@@ -24,10 +27,12 @@ class ShippingPageLocators(object):
     INT_PHONE = (By.ID, 'id_int_phone')
     CONTINUE_BUTTON = (By.CLASS_NAME, 'submit')
 
+
 class VerifyAddressPageLocators(object):
     """A class for Verify Address page locators."""
     VERIFICATION_SUMMARY = (By.CLASS_NAME, 'verification-summary')
     CONTINUE_BUTTON = (By.CLASS_NAME, 'button-continue')
+
 
 class PaymentPageLocators(object):
     """A class for Payment page locators."""
@@ -35,4 +40,3 @@ class PaymentPageLocators(object):
     EXPIRATION = (By.ID, 'expiration')
     CVV = (By.ID, 'cvv')
     CONTINUE_BUTTON = (By.CLASS_NAME, 'submit')
-

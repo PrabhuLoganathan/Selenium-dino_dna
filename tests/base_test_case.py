@@ -3,21 +3,15 @@ from selenium import webdriver
 
 
 class BaseTestCase(object):
-    @classmethod
-    def setup_class(self):
+
+    def setup(self):
         self.driver = webdriver.Chrome()
         # TODO: implement standalone Selenium server
         # self.driver = webdriver.Remote(
         #     command_executor='http://localhost:4444/wd/hub',
         #     desired_capabilities=DesiredCapabilities.CHROME)
-
-    def setup(self):
-        pass
+        self.driver.implicitly_wait(5)
 
     def teardown(self):
-        self.driver.close()
+        # TODO: review quit on every test after more tests are included
         self.driver.quit()
-
-    @classmethod
-    def teardown_class(self):
-        pass
