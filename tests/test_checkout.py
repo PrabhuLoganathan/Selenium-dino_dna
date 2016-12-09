@@ -26,18 +26,18 @@ class TestCheckout(BaseTestCase):
         # 2) Add 5 kits and enters unique names for each kit
         cart_page.add_health_ancestory_kit('Trex')
         assert cart_page.cart_item_match(order=1, label='Health + Ancestry', name='Trex')
-        #
-        # cart_page.add_health_ancestory_kit('Stegasaurus')
-        # assert cart_page.cart_item_match(order=2, label='Health + Ancestry', name='Stegasaurus')
-        #
-        # cart_page.add_health_ancestory_kit('Jim')
-        # assert cart_page.cart_item_match(order=3, label='Health + Ancestry', name='Jim')
-        #
-        # cart_page.add_health_ancestory_kit('Sam')
-        # assert cart_page.cart_item_match(order=4, label='Health + Ancestry', name='Sam')
-        #
-        # cart_page.add_health_ancestory_kit('Manny')
-        # assert cart_page.cart_item_match(order=5, label='Health + Ancestry', name='Manny')
+
+        cart_page.add_health_ancestory_kit('Stegasaurus')
+        assert cart_page.cart_item_match(order=2, label='Health + Ancestry', name='Stegasaurus')
+
+        cart_page.add_health_ancestory_kit('Jim')
+        assert cart_page.cart_item_match(order=3, label='Health + Ancestry', name='Jim')
+
+        cart_page.add_health_ancestory_kit('Sam')
+        assert cart_page.cart_item_match(order=4, label='Health + Ancestry', name='Sam')
+
+        cart_page.add_health_ancestory_kit('Manny')
+        assert cart_page.cart_item_match(order=5, label='Health + Ancestry', name='Manny')
 
         cart_page.click_continue()
 
